@@ -18,7 +18,7 @@ from __future__ import division
 from __future__ import print_function
 
 from tensorflow.contrib import graph_editor as ge
-from tensorflow.contrib.graph_editor.tests import match
+from gpt_2_simple.src.tensorflow.contrib.graph_editor.tests import match
 from tensorflow.python.framework import constant_op
 from tensorflow.python.framework import ops
 from tensorflow.python.ops import math_ops

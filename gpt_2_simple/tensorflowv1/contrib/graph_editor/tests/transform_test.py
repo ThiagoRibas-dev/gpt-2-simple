@@ -21,7 +21,7 @@ import collections
 import functools
 import numpy as np
 from tensorflow.contrib import graph_editor as ge
-from tensorflow.contrib.graph_editor.tests import match
+from gpt_2_simple.src.tensorflow.contrib.graph_editor.tests import match
 from tensorflow.core.framework import attr_value_pb2
 from tensorflow.python.client import session
 from tensorflow.python.framework import constant_op

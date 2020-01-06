@@ -2,9 +2,9 @@ from toposort import toposort
 import contextlib
 import numpy as np
 import tensorflow as tf
-import tensorflow.contrib.graph_editor as ge
 import time
 import sys
+from gpt_2_simple.tensorflowv1.contrib.graph_editor import ge
 sys.setrecursionlimit(10000)
 # refers back to current module if we decide to split helpers out
 util = sys.modules[__name__]
@@ -28,6 +28,7 @@ def gradients_memory(ys, xs, grad_ys=None, **kwargs):
 
 def gradients_collection(ys, xs, grad_ys=None, **kwargs):
     return gradients(ys, xs, grad_ys, checkpoints='collection', **kwargs)
+
 
 def gradients(ys, xs, grad_ys=None, checkpoints='collection', **kwargs):
     '''
@@ -58,7 +59,7 @@ def gradients(ys, xs, grad_ys=None, checkpoints='collection', **kwargs):
     if not isinstance(xs,list):
         xs = [xs]
 
-    bwd_ops = ge.get_backward_walk_ops([y.op for y in ys],
+    bwd_ops = tf.python.ops.op_selector.get_backward_walk_ops([y.op for y in ys],
                                        inclusive=True)
 
     debug_print("bwd_ops: %s", bwd_ops)
@@ -125,7 +126,7 @@ def gradients(ys, xs, grad_ys=None, checkpoints='collection', **kwargs):
                 # get all bottlenecks in the graph
                 bottleneck_ts = []
                 for t in ts:
-                    b = set(ge.get_backward_walk_ops(t.op, inclusive=True, within_ops=fwd_ops))
+                    b = set(tf.python.ops.op_selector.get_backward_walk_ops(t.op, inclusive=True, within_ops=fwd_ops))
                     f = set(ge.get_forward_walk_ops(t.op, inclusive=False, within_ops=fwd_ops))
                     # check that there are not shortcuts
                     b_inp = set([inp for op in b for inp in op.inputs]).intersection(ts_all)
@@ -318,7 +319,7 @@ def tf_toposort(ts, within_ops=None):
     return ts_sorted_lists
 
 def fast_backward_ops(within_ops, seed_ops, stop_at_ts):
-    bwd_ops = set(ge.get_backward_walk_ops(seed_ops, stop_at_ts=stop_at_ts))
+    bwd_ops = set(tf.python.ops.op_selector.get_backward_walk_ops(seed_ops, stop_at_ts=stop_at_ts))
     ops = bwd_ops.intersection(within_ops).difference([t.op for t in stop_at_ts])
     return list(ops)
 
