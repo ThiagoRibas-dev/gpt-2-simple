@@ -18,8 +18,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import subgraph as _subgraph
-from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import util as _util
+from gpt_2_simple.tensorflowv1.contrib.graph_editor import subgraph as _subgraph
+from gpt_2_simple.tensorflowv1.contrib.graph_editor import util as _util
 from tensorflow.python.framework import ops as _tf_ops
 
 from tensorflow.python.util.all_util import remove_undocumented
