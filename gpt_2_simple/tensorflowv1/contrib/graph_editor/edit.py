@@ -18,10 +18,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from gpt_2_simple.src.tensorflow.contrib.graph_editor import reroute
-from gpt_2_simple.src.tensorflow.contrib.graph_editor import select
-from gpt_2_simple.src.tensorflow.contrib.graph_editor import subgraph
-from gpt_2_simple.src.tensorflow.contrib.graph_editor import util
+from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import reroute
+from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import select
+from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import subgraph
+from gpt_2_simple.src.tensorflowv1.contrib.graph_editor import util
 from tensorflow.python.ops import array_ops as tf_array_ops
 
 __all__ = [
