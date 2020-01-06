@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 import time
 import sys
-from gpt_2_simple.tensorflowv1.contrib.graph_editor import ge
+from gpt_2_simple.tensorflowv1.contrib.graph_editor import select as ge
 sys.setrecursionlimit(10000)
 # refers back to current module if we decide to split helpers out
 util = sys.modules[__name__]
