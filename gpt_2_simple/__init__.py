@@ -1,11 +1,10 @@
-from .gpt_2 import *
-
-
-"""TensorFlow Graph Editor."""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from .gpt_2 import *
+
+"""TensorFlow Graph Editor."""
 # pylint: disable=wildcard-import
 
 from gpt_2_simple.src.tensorflow.contrib.graph_editor.edit import *
